@@ -11,10 +11,6 @@ describe('pagination directive with default configuration', function () {
     $rootScope.$digest();
   }));
 
-  it('has a "pagination" css class', function() {
-    expect(element.hasClass('pagination')).toBe(true);
-  });
-
   it('contains one ul and num-pages + 2 li elements', function() {
     expect(element.find('ul').length).toBe(1);
     expect(element.find('li').length).toBe(7);
@@ -413,10 +409,6 @@ describe('pagination directive with just number links', function () {
     element = $compile('<pagination direction-links="false" num-pages="numPages" current-page="currentPage"></pagination>')($rootScope);
     $rootScope.$digest();
   }));
-
-  it('has a "pagination" css class', function() {
-    expect(element.hasClass('pagination')).toBe(true);
-  });
 
   it('contains one ul and num-pages li elements', function() {
     expect(element.find('ul').length).toBe(1);
