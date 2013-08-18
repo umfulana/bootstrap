@@ -1,5 +1,5 @@
 describe('pagination directive with default configuration', function () {
-  var $rootScope, element;
+  var $compile, $rootScope, element;
   beforeEach(module('ui.bootstrap.pagination'));
   beforeEach(module('template/pagination/pagination.html'));
   beforeEach(inject(function(_$compile_, _$rootScope_) {
@@ -7,7 +7,7 @@ describe('pagination directive with default configuration', function () {
     $rootScope = _$rootScope_;
     $rootScope.numPages = 5;
     $rootScope.currentPage = 3;
-    element = $compile('<pagination num-pages="numPages" current-page="currentPage"></pagination>')($rootScope);
+    element = $compile('<div><pagination num-pages="numPages" current-page="currentPage"></pagination></div>')($rootScope);
     $rootScope.$digest();
   }));
 
@@ -126,7 +126,7 @@ describe('pagination directive with default configuration', function () {
 });
 
 describe('pagination directive with max size option', function () {
-  var $rootScope, element;
+  var $compile, $rootScope, element;
   beforeEach(module('ui.bootstrap.pagination'));
   beforeEach(module('template/pagination/pagination.html'));
   beforeEach(inject(function(_$compile_, _$rootScope_) {
@@ -135,7 +135,7 @@ describe('pagination directive with max size option', function () {
     $rootScope.numPages = 10;
     $rootScope.currentPage = 3;
     $rootScope.maxSize = 5;
-    element = $compile('<pagination num-pages="numPages" current-page="currentPage" max-size="maxSize"></pagination>')($rootScope);
+    element = $compile('<div><pagination num-pages="numPages" current-page="currentPage" max-size="maxSize"></pagination></div>')($rootScope);
     $rootScope.$digest();
   }));
   
@@ -209,7 +209,7 @@ describe('pagination directive with max size option', function () {
 });
 
 describe('pagination directive with max size option & no rotate', function () {
-  var $rootScope, element;
+  var $compile, $rootScope, element;
   beforeEach(module('ui.bootstrap.pagination'));
   beforeEach(module('template/pagination/pagination.html'));
   beforeEach(inject(function(_$compile_, _$rootScope_) {
@@ -219,7 +219,7 @@ describe('pagination directive with max size option & no rotate', function () {
     $rootScope.currentPage = 7;
     $rootScope.maxSize = 5;
     $rootScope.rotate = false;
-    element = $compile('<pagination num-pages="numPages" current-page="currentPage" max-size="maxSize" rotate="rotate"></pagination>')($rootScope);
+    element = $compile('<div><pagination num-pages="numPages" current-page="currentPage" max-size="maxSize" rotate="rotate"></pagination></div>')($rootScope);
     $rootScope.$digest();
   }));
 
@@ -281,7 +281,7 @@ describe('pagination directive with max size option & no rotate', function () {
 });
 
 describe('pagination directive with added first & last links', function () {
-  var $rootScope, element;
+  var $compile, $rootScope, element;
   beforeEach(module('ui.bootstrap.pagination'));
   beforeEach(module('template/pagination/pagination.html'));
   beforeEach(inject(function(_$compile_, _$rootScope_) {
@@ -289,7 +289,7 @@ describe('pagination directive with added first & last links', function () {
     $rootScope = _$rootScope_;
     $rootScope.numPages = 5;
     $rootScope.currentPage = 3;
-    element = $compile('<pagination boundary-links="true" num-pages="numPages" current-page="currentPage"></pagination>')($rootScope);
+    element = $compile('<div><pagination boundary-links="true" num-pages="numPages" current-page="currentPage"></pagination></div>')($rootScope);
     $rootScope.$digest();
   }));
 
@@ -398,7 +398,7 @@ describe('pagination directive with added first & last links', function () {
 });
 
 describe('pagination directive with just number links', function () {
-  var $rootScope, element;
+  var $compile, $rootScope, element;
   beforeEach(module('ui.bootstrap.pagination'));
   beforeEach(module('template/pagination/pagination.html'));
   beforeEach(inject(function(_$compile_, _$rootScope_) {
@@ -406,7 +406,7 @@ describe('pagination directive with just number links', function () {
     $rootScope = _$rootScope_;
     $rootScope.numPages = 5;
     $rootScope.currentPage = 3;
-    element = $compile('<pagination direction-links="false" num-pages="numPages" current-page="currentPage"></pagination>')($rootScope);
+    element = $compile('<div><pagination direction-links="false" num-pages="numPages" current-page="currentPage"></pagination></div>')($rootScope);
     $rootScope.$digest();
   }));
 
@@ -483,7 +483,7 @@ describe('pagination directive with just number links', function () {
 });
 
 describe('setting paginationConfig', function() {
-  var $rootScope, element;
+  var $compile, $rootScope, element;
   var originalConfig = {};
   beforeEach(module('ui.bootstrap.pagination'));
   beforeEach(module('template/pagination/pagination.html'));
@@ -499,7 +499,7 @@ describe('setting paginationConfig', function() {
     paginationConfig.previousText = 'PR';
     paginationConfig.nextText = 'NE';
     paginationConfig.lastText = 'LA';
-    element = $compile('<pagination num-pages="numPages" current-page="currentPage"></pagination>')($rootScope);
+    element = $compile('<div><pagination num-pages="numPages" current-page="currentPage"></pagination></div>')($rootScope);
     $rootScope.$digest();
   }));
   afterEach(inject(function(paginationConfig) {
@@ -523,7 +523,7 @@ describe('setting paginationConfig', function() {
 
 
 describe('pagination directive with first, last & number links', function () {
-  var $rootScope, element;
+  var $compile, $rootScope, element;
   beforeEach(module('ui.bootstrap.pagination'));
   beforeEach(module('template/pagination/pagination.html'));
   beforeEach(inject(function(_$compile_, _$rootScope_) {
@@ -532,7 +532,7 @@ describe('pagination directive with first, last & number links', function () {
     $rootScope.numPages = 5;
     $rootScope.currentPage = 3;
     $rootScope.directions = false;
-    element = $compile('<pagination boundary-links="true" direction-links="directions" num-pages="numPages" current-page="currentPage"></pagination>')($rootScope);
+    element = $compile('<div><pagination boundary-links="true" direction-links="directions" num-pages="numPages" current-page="currentPage"></pagination></div>')($rootScope);
     $rootScope.$digest();
   }));
 
@@ -578,7 +578,7 @@ describe('pagination directive with first, last & number links', function () {
 });
 
 describe('pagination bypass configuration from attributes', function () {
-  var $rootScope, element;
+  var $compile, $rootScope, element;
   beforeEach(module('ui.bootstrap.pagination'));
   beforeEach(module('template/pagination/pagination.html'));
   beforeEach(inject(function(_$compile_, _$rootScope_) {
@@ -586,7 +586,7 @@ describe('pagination bypass configuration from attributes', function () {
     $rootScope = _$rootScope_;
     $rootScope.numPages = 5;
     $rootScope.currentPage = 3;
-    element = $compile('<pagination boundary-links="true" first-text="<<" previous-text="<" next-text=">" last-text=">>" num-pages="numPages" current-page="currentPage"></pagination>')($rootScope);
+    element = $compile('<div><pagination boundary-links="true" first-text="<<" previous-text="<" next-text=">" last-text=">>" num-pages="numPages" current-page="currentPage"></pagination></div>')($rootScope);
     $rootScope.$digest();
   }));
 
