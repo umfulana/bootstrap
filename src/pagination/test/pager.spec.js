@@ -1,4 +1,4 @@
-ddescribe('pager directive with default configuration', function () {
+describe('pager directive with default configuration', function () {
   var $compile, $rootScope, element;
   beforeEach(module('ui.bootstrap.pagination'));
   beforeEach(module('template/pagination/pager.html'));
