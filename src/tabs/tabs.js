@@ -304,10 +304,13 @@ angular.module('ui.bootstrap.tabs', [])
       if (!scope.$eval(attrs.tabsetTitles)) {
         elm.remove();
       } else {
-        //now that tabs location has been decided, transclude the tab titles in
-        tabsetCtrl.$transcludeFn(tabsetCtrl.$scope.$parent, function(node) {
-          elm.append(node);
-        });
+         setTimeout(function () {
+            //now that tabs location has been decided, transclude the tab titles in
+            tabsetCtrl.$transcludeFn(tabsetCtrl.$scope.$parent, function (node) {
+               elm.append(node);
+            });
+            scope.$apply();
+         }, 1)
       }
     }
   };
