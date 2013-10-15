@@ -2,7 +2,7 @@
 
 ***
 
-[![Build Status](https://secure.travis-ci.org/angular-ui/bootstrap.png)](http://travis-ci.org/angular-ui/bootstrap)
+[![Build Status](https://secure.travis-ci.org/angular-ui/bootstrap.png)](http://travis-ci.org/angular-ui/bootstrap) [![devDependency Status](https://david-dm.org/angular-ui/bootstrap/dev-status.png?branch=master)](https://david-dm.org/angular-ui/bootstrap#info=devDependencies)
 
 ## Demo
 
@@ -24,6 +24,27 @@ angular.module('myModule', ['ui.bootstrap']);
 Project files are also available through your favourite package manager:
 * **Bower**: `bower install angular-bootstrap`
 * **NuGet**: https://nuget.org/packages/Angular.UI.Bootstrap/
+
+## Supported browsers
+
+Directives from this repository are automatically tested with the following browsers:
+* Chrome (stable and canary channel)
+* Firefox
+* IE 9 and 10
+* Opera
+* Safari
+
+Modern mobile browsers should work without problems.
+
+**IE 8 is not officially supported at the moment**. This project is run by volunteers and with the current number of commiters
+we are not in the position to guarantee IE8 support. If you need support for IE8 we would welcome a contributor who would like to take care about IE8.
+Alternativelly you could sponsor this project to guarantee IE8 support.
+
+We believe that most of the directives would work OK after:
+* including relevant shims (for ES5 we recommend https://github.com/kriskowal/es5-shim)
+* taking care of the steps described in http://docs.angularjs.org/guide/ie
+
+We are simply not regularly testing against IE8.
 
 ## Project philosophy
 
@@ -57,8 +78,9 @@ We are always looking for the quality contributions! Please check the [CONTRIBUT
 
 #### Build
 * Build the whole project: `grunt` - this will run `lint`, `test`, and `concat` targets
+* To build modules, first run `grunt html2js` then `grunt build:module1:module2...:moduleN`
 
-Check the Grunt build file for other tasks that are defined for this project
+Check the Grunt build file for other tasks that are defined for this project.
 
 #### TDD
 * Run test: `grunt watch`
@@ -67,15 +89,15 @@ This will start Karma server and will continously watch files in the project, ex
 
 ### Release
 * Bump up version number in `package.json`
-* Commit the version change with the following message: `chore(release): [versio number]`
+* Commit the version change with the following message: `chore(release): [version number]`
 * tag
 * push changes and a tag (`git push --tags`)
 * switch to the `gh-pages` branch: `git checkout gh-pages`
 * copy content of the dist folder to the main folder
-* Commit the version change with the following message: `chore(release): [versio number]`
+* Commit the version change with the following message: `chore(release): [version number]`
 * push changes
 * switch back to the `main branch` and modify `package.json` to bump up version for the next iteration
-* commit (`chore(release): starting [versio number]`) and push
+* commit (`chore(release): starting [version number]`) and push
 * publish Bower and NuGet packages
 
 Well done! (If you don't like repeating yourself open a PR with a grunt task taking care of the above!)
