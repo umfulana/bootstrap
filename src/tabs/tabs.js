@@ -15,7 +15,7 @@ angular.module('ui.bootstrap.tabs', [])
   };
 })
 
-.controller('TabsetController', ['$scope', function TabsetCtrl($scope) {
+.controller('TabsetController', ['$scope', '$transclude', function TabsetCtrl($scope, $transclude) {
   var ctrl = this,
       tabs = ctrl.tabs = $scope.tabs = [];
 
@@ -43,6 +43,8 @@ angular.module('ui.bootstrap.tabs', [])
     }
     tabs.splice(index, 1);
   };
+
+  ctrl.$transcludeFn = $transclude;
 }])
 
 /**
@@ -81,15 +83,11 @@ angular.module('ui.bootstrap.tabs', [])
     scope: {},
     controller: 'TabsetController',
     templateUrl: 'template/tabs/tabset.html',
-    compile: function(elm, attrs, transclude) {
-      return function(scope, element, attrs, tabsetCtrl) {
-        scope.vertical = angular.isDefined(attrs.vertical) ? scope.$parent.$eval(attrs.vertical) : false;
-        scope.type = angular.isDefined(attrs.type) ? scope.$parent.$eval(attrs.type) : 'tabs';
-        scope.direction = angular.isDefined(attrs.direction) ? scope.$parent.$eval(attrs.direction) : 'top';
-        scope.tabsAbove = (scope.direction != 'below');
-        tabsetCtrl.$scope = scope;
-        tabsetCtrl.$transcludeFn = transclude;
-      };
+    link: function(scope, element, attrs) {
+      scope.vertical = angular.isDefined(attrs.vertical) ? scope.$parent.$eval(attrs.vertical) : false;
+      scope.type = angular.isDefined(attrs.type) ? scope.$parent.$eval(attrs.type) : 'tabs';
+      scope.direction = angular.isDefined(attrs.direction) ? scope.$parent.$eval(attrs.direction) : 'top';
+      scope.tabsAbove = (scope.direction != 'below');
     }
   };
 })
@@ -301,14 +299,15 @@ angular.module('ui.bootstrap.tabs', [])
     templateUrl: 'template/tabs/tabset-titles.html',
     replace: true,
     link: function(scope, elm, attrs, tabsetCtrl) {
-      if (!scope.$eval(attrs.tabsetTitles)) {
-        elm.remove();
-      } else {
+//      if (!scope.$eval(attrs.tabsetTitles)) {
+//        elm.remove();
+//      } else {
         //now that tabs location has been decided, transclude the tab titles in
-        tabsetCtrl.$transcludeFn(tabsetCtrl.$scope.$parent, function(node) {
+        //scope is correctly set to the child scope of the tabsetCtrl's parent scope
+        tabsetCtrl.$transcludeFn(function(node) {
           elm.append(node);
         });
-      }
+//      }
     }
   };
 });
