@@ -29,7 +29,7 @@ describe('pager directive', function () {
   }
 
   it('has a "pager" css class', function() {
-    expect(element.hasClass('pager')).toBe(true);
+    expect(element.find('ul').hasClass('pager')).toBe(true);
   });
 
   it('contains 2 li elements', function() {

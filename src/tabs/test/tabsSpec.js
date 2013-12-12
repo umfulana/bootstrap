@@ -581,17 +581,17 @@ describe('tabs', function() {
       expect(elm.find('.nav + .tab-content').length).toBe(1);
     }));
 
-    it('should only have the `tab-below direction class if the direction is "below"', inject(function($compile, $rootScope) {
-      scope = $rootScope.$new();
-      scope.direction = 'below';
-
-      elm = $compile('<tabset direction="direction"></tabset>')(scope);
-      scope.$apply();
-      expect(elm).not.toHaveClass('tabs-left');
-      expect(elm).not.toHaveClass('tabs-right');
-      expect(elm).toHaveClass('tabs-below');
-      expect(elm.find('.tab-content + .nav').length).toBe(1);
-    }));
+//    it('should only have the `tab-below direction class if the direction is "below"', inject(function($compile, $rootScope) {
+//      scope = $rootScope.$new();
+//      scope.direction = 'below';
+//
+//      elm = $compile('<tabset direction="direction"></tabset>')(scope);
+//      scope.$apply();
+//      expect(elm).not.toHaveClass('tabs-left');
+//      expect(elm).not.toHaveClass('tabs-right');
+//      expect(elm).toHaveClass('tabs-below');
+//      expect(elm.find('.tab-content + .nav').length).toBe(1);
+//    }));
   });
 
   //https://github.com/angular-ui/bootstrap/issues/524

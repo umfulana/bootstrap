@@ -33,7 +33,7 @@ describe('pagination directive', function () {
   });
 
   it('contains one ul and num-pages + 2 li elements', function() {
-    expect(element.find('ul').length).toBe(1);
+    expect(element.length).toBe(1);
     expect(getPaginationBarSize()).toBe(7);
     expect(getPaginationEl(0).text()).toBe('Previous');
     expect(getPaginationEl(-1).text()).toBe('Next');
@@ -268,7 +268,7 @@ describe('pagination directive', function () {
     }));
 
     it('contains one ul and maxsize + 4 elements', function() {
-      expect(element.find('ul').length).toBe(1);
+      expect(element.length).toBe(1);
       expect(getPaginationBarSize()).toBe($rootScope.maxSize + 4);
       expect(getPaginationEl(0).text()).toBe('Previous');
       expect(getPaginationEl(1).text()).toBe('...');
@@ -328,7 +328,7 @@ describe('pagination directive', function () {
     }));
 
     it('contains one ul and num-pages + 4 li elements', function() {
-      expect(element.find('ul').length).toBe(1);
+      expect(element.length).toBe(1);
       expect(getPaginationBarSize()).toBe(9);
       expect(getPaginationEl(0).text()).toBe('First');
       expect(getPaginationEl(1).text()).toBe('Previous');
